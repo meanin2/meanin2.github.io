@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Judaica Canvas</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .iframe-container {
+            position: fixed;
+            top: 64px; /* Height of the header */
+            left: 0;
+            width: 100%;
+            height: calc(100% - 128px); /* Full height minus header and footer */
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <header class="bg-gray-800 text-white p-4">
@@ -18,15 +27,10 @@
             </ul>
         </nav>
     </header>
-    <main class="container mx-auto p-4">
-        <section class="my-8">
-            <h1 class="text-4xl font-bold mb-4">Gallery</h1>
-            <div class="iframe-container mt-8">
-                <iframe style="width:100%;padding:20px;max-width:1400px;min-height:1000px;" src="https://www.pictorem.com/gallery/Judaica.Canvas" allowfullscreen frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-            </div>
-        </section>
+    <main class="iframe-container">
+        <iframe src="https://www.pictorem.com/gallery/Judaica.Canvas" allowfullscreen frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" class="w-full h-full"></iframe>
     </main>
-    <footer class="bg-gray-800 text-white p-4 mt-8">
+    <footer class="bg-gray-800 text-white p-4 fixed bottom-0 w-full">
         <div class="container mx-auto text-center">
             &copy; 2024 Judaica Canvas. All rights reserved.
         </div>
