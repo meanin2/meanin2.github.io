@@ -1,56 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Judaica Canvas</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script>
-        async function fetchFeaturedProducts() {
-            const response = await fetch('https://api.pictorem.com/v1/products'); // Update with the correct API endpoint and parameters
-            const products = await response.json();
-            const container = document.getElementById('featured-products');
-            products.forEach(product => {
-                const productElement = `
-                    <div class="bg-white p-4 rounded shadow-md">
-                        <img src="${product.image}" alt="${product.title}" class="h-48 w-full object-cover rounded">
-                        <h3 class="text-xl mt-2">${product.title}</h3>
-                        <p class="text-gray-700 mt-1">${product.description}</p>
-                    </div>`;
-                container.innerHTML += productElement;
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', fetchFeaturedProducts);
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <header class="bg-gray-800 text-white p-4">
-        <nav class="container mx-auto flex justify-between">
-            <div class="logo text-xl font-bold">Judaica Canvas</div>
-            <ul class="flex space-x-4">
-                <li><a href="index.html" class="hover:underline">Home</a></li>
-                <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
-                <li><a href="about.html" class="hover:underline">About</a></li>
-                <li><a href="contact.html" class="hover:underline">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="container mx-auto p-4">
-        <section class="hero bg-cover bg-center h-64 flex items-center justify-center text-white" style="background-image: url('path-to-your-image.jpg');">
-            <h1 class="text-4xl font-bold">Welcome to Judaica Canvas</h1>
-        </section>
-        <section class="featured-products mt-8">
-            <h2 class="text-2xl font-semibold mb-4">Featured Products</h2>
-            <div id="featured-products" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Product Cards will be inserted here by JavaScript -->
-            </div>
-        </section>
-    </main>
-    <footer class="bg-gray-800 text-white p-4 mt-8">
-        <div class="container mx-auto text-center">
-            &copy; 2024 Judaica Canvas. All rights reserved.
-        </div>
-    </footer>
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-6">
+      <h1 class="text-3xl font-bold text-gray-900">Art Gallery</h1>
+      <nav class="mt-4">
+        <a href="index.html" class="text-gray-600 hover:text-gray-900">Home</a>
+        <a href="about.html" class="ml-4 text-gray-600 hover:text-gray-900">About</a>
+        <a href="gallery.html" class="ml-4 text-gray-600 hover:text-gray-900">Gallery</a>
+        <a href="contact.html" class="ml-4 text-gray-600 hover:text-gray-900">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6">
+    <h2 class="text-2xl font-bold mb-4">Featured Products</h2>
+    <div id="featured-products" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    <div id="error-message" class="text-red-500 mt-4"></div>
+  </main>
+
+  <footer class="bg-white shadow mt-6">
+    <div class="container mx-auto px-4 py-6">
+      <p class="text-gray-600">&copy; 2024 Art Gallery. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    async function fetchFeaturedProducts() {
+      const token = '66583f5922fdaa71a7364747';
+      const publicKey = 'pk_ynpWOCllv3Gf0jma7tpIGJBWg';
+      
+      try {
+        const response = await fetch('https://api.pictorem.com/v1/products', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'X-API-KEY': publicKey
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const products = await response.json();
+        displayFeaturedProducts(products.slice(0, 3)); // Display first three products as featured
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+        document.getElementById('error-message').textContent = 'Failed to load featured products. Please try again later.';
+      }
+    }
+
+    function displayFeaturedProducts(products) {
+      const featuredProductsContainer = document.getElementById('featured-products');
+      featuredProductsContainer.innerHTML = ''; // Clear any existing content
+
+      products.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('bg-white', 'shadow', 'rounded', 'p-4');
+        productElement.innerHTML = `
+          <img src="${product.imageUrl}" alt="${product.title}" class="w-full h-48 object-cover rounded">
+          <h3 class="text-lg font-bold mt-2">${product.title}</h3>
+          <p class="text-gray-600">${product.description}</p>
+          <a href="${product.detailPageUrl}" target="_blank" class="text-blue-600 hover:text-blue-800">View Details</a>
+        `;
+        featuredProductsContainer.appendChild(productElement);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchFeaturedProducts);
+  </script>
 </body>
 </html>
