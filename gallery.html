@@ -7,16 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .iframe-container {
-            position: fixed;
+            position: absolute;
             top: 64px; /* Height of the header */
             left: 0;
             width: 100%;
-            height: calc(100% - 128px); /* Full height minus header and footer */
+            bottom: 64px; /* Height of the footer */
         }
     </style>
 </head>
 <body class="bg-gray-100">
-    <header class="bg-gray-800 text-white p-4">
+    <header class="bg-gray-800 text-white p-4 fixed top-0 left-0 right-0 z-10">
         <nav class="container mx-auto flex justify-between">
             <div class="logo text-xl font-bold">Judaica Canvas</div>
             <ul class="flex space-x-4">
@@ -30,7 +30,7 @@
     <main class="iframe-container">
         <iframe src="https://www.pictorem.com/gallery/Judaica.Canvas" allowfullscreen frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" class="w-full h-full"></iframe>
     </main>
-    <footer class="bg-gray-800 text-white p-4 fixed bottom-0 w-full">
+    <footer class="bg-gray-800 text-white p-4 fixed bottom-0 left-0 right-0 z-10">
         <div class="container mx-auto text-center">
             &copy; 2024 Judaica Canvas. All rights reserved.
         </div>
