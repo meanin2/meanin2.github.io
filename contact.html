@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Judaica Canvas</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Judaica Canvas</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <header class="bg-gray-800 text-white p-4">
-        <nav class="container mx-auto flex justify-between">
-            <div class="logo text-xl font-bold">Judaica Canvas</div>
-            <ul class="flex space-x-4">
-                <li><a href="index.html" class="hover:underline">Home</a></li>
-                <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
-                <li><a href="about.html" class="hover:underline">About</a></li>
-                <li><a href="contact.html" class="hover:underline">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="container mx-auto p-4">
-        <section class="my-8">
-            <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
-            <form action="#" method="POST" class="space-y-4">
-                <div>
-                    <label for="name" class="block text-gray-700">Name</label>
-                    <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded" required>
-                </div>
-                <div>
-                    <label for="email" class="block text-gray-700">Email</label>
-                    <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded" required>
-                </div>
-                <div>
-                    <label for="message" class="block text-gray-700">Message</label>
-                    <textarea id="message" name="message" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
-                </div>
-                <button type="submit" class="bg-gray-800 text-white p-2 rounded">Send</button>
-            </form>
-        </section>
-    </main>
-    <footer class="bg-gray-800 text-white p-4 mt-8">
-        <div class="container mx-auto text-center">
-            &copy; 2024 Judaica Canvas. All rights reserved.
+  <header class="bg-gray-800 text-white p-4 fixed top-0 left-0 right-0 z-10">
+    <nav class="container mx-auto flex justify-between">
+      <div class="logo text-xl font-bold">Judaica Canvas</div>
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
+        <li><a href="about.html" class="hover:underline">About</a></li>
+        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 mt-16">
+    <section class="my-8">
+      <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
+      <form action="#" method="POST" class="space-y-4">
+        <div>
+          <label for="name" class="block text-gray-700">Name</label>
+          <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded" required>
         </div>
-    </footer>
+        <div>
+          <label for="email" class="block text-gray-700">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div>
+          <label for="message" class="block text-gray-700">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+        </div>
+        <button type="submit" class="bg-gray-800 text-white p-2 rounded">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white p-4 mt-6">
+    <div class="container mx-auto text-center">
+      &copy; 2024 Judaica Canvas. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
