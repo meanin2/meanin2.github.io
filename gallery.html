@@ -28,12 +28,27 @@
         </nav>
     </header>
     <main class="iframe-container">
-        <iframe src="https://www.pictorem.com/gallery/Judaica.Canvas" allowfullscreen frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" class="w-full h-full"></iframe>
+        <iframe id="gallery-iframe" src="https://www.pictorem.com/gallery/Judaica.Canvas" allowfullscreen frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" class="w-full h-full"></iframe>
     </main>
     <footer class="bg-gray-800 text-white p-4 fixed bottom-0 left-0 right-0 z-10">
         <div class="container mx-auto text-center">
             &copy; 2024 Judaica Canvas. All rights reserved.
         </div>
     </footer>
+
+    <script>
+        // JavaScript to handle link clicks within the iframe
+        document.getElementById('gallery-iframe').addEventListener('load', function() {
+            const iframe = document.getElementById('gallery-iframe').contentWindow;
+
+            iframe.document.querySelectorAll('a').forEach(anchor => {
+                anchor.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const url = event.target.href;
+                    window.location.href = url; // Redirect in the same window
+                });
+            });
+        });
+    </script>
 </body>
 </html>
