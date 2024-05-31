@@ -7,19 +7,19 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-6">
-      <h1 class="text-3xl font-bold text-gray-900">Art Gallery</h1>
-      <nav class="mt-4">
-        <a href="index.html" class="text-gray-600 hover:text-gray-900">Home</a>
-        <a href="about.html" class="ml-4 text-gray-600 hover:text-gray-900">About</a>
-        <a href="gallery.html" class="ml-4 text-gray-600 hover:text-gray-900">Gallery</a>
-        <a href="contact.html" class="ml-4 text-gray-600 hover:text-gray-900">Contact</a>
-      </nav>
-    </div>
+  <header class="bg-gray-800 text-white p-4 fixed top-0 left-0 right-0 z-10">
+    <nav class="container mx-auto flex justify-between">
+      <div class="logo text-xl font-bold">Judaica Canvas</div>
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
+        <li><a href="about.html" class="hover:underline">About</a></li>
+        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="container mx-auto px-4 py-6">
+  <main class="container mx-auto px-4 py-6 mt-16">
     <!-- Hero Section -->
     <div class="hero bg-white shadow rounded-lg overflow-hidden mb-8">
       <img src="https://source.unsplash.com/featured/?art,artist" alt="Art" class="w-full h-96 object-cover">
@@ -37,9 +37,9 @@
     </section>
   </main>
 
-  <footer class="bg-white shadow mt-6">
-    <div class="container mx-auto px-4 py-6">
-      <p class="text-gray-600">&copy; 2024 Art Gallery. All rights reserved.</p>
+  <footer class="bg-gray-800 text-white p-4 mt-6">
+    <div class="container mx-auto text-center">
+      &copy; 2024 Judaica Canvas. All rights reserved.
     </div>
   </footer>
 </body>
