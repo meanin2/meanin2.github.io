@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Art Gallery</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .prev {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+    .welcome-section {
+      background: url('background-image-url.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 50px 0;
+    }
+    .gallery-section {
+      padding: 50px 0;
+    }
+  </style>
 </head>
 <body class="bg-gray-100">
   <header class="bg-gray-800 text-white p-4 fixed top-0 left-0 right-0 z-10">
@@ -20,20 +58,60 @@
   </header>
 
   <main class="container mx-auto px-4 py-6 mt-16">
-    <!-- Hero Section -->
-    <div class="hero bg-white shadow rounded-lg overflow-hidden mb-8">
-      <img src="2024-05-31_16-13-09_5848.png" alt="Art" class="w-full h-96 object-cover">
-      <div class="p-6">
-        <h2 class="text-4xl font-bold mb-2">Welcome to Our Art Gallery</h2>
-        <p class="text-gray-700 mb-4">Discover a world of creativity and inspiration. Browse through our extensive collection of artworks from talented artists around the globe.</p>
-        <a href="https://shop.judaicacanvas.com" class="text-white bg-blue-600 hover:bg-blue-800 px-4 py-2 rounded">Explore the Gallery</a>
+    <!-- Slider Section -->
+    <div class="slider bg-white shadow rounded-lg overflow-hidden mb-8">
+      <div class="slides">
+        <div class="slide">
+          <img src="slider (1).webp" alt="Slide 1" class="w-full h-96 object-cover">
+        </div>
+        <div class="slide">
+          <img src="slider (2).webp" alt="Slide 2" class="w-full h-96 object-cover">
+        </div>
+        <div class="slide">
+          <img src="slider (3).webp" alt="Slide 3" class="w-full h-96 object-cover">
+        </div>
+        <div class="slide">
+          <img src="slider (4).webp" alt="Slide 4" class="w-full h-96 object-cover">
+        </div>
+        <div class="slide">
+          <img src="slider (5).webp" alt="Slide 5" class="w-full h-96 object-cover">
+        </div>
+      </div>
+      <button class="prev" onclick="moveSlides(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlides(1)">&#10095;</button>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-section text-white text-center">
+      <h2 class="text-4xl font-bold mb-2">Welcome to Our Art Gallery</h2>
+      <p class="text-lg mb-4">Discover a world of creativity and inspiration. Browse through our extensive collection of artworks from talented artists around the globe.</p>
+      <a href="https://shop.judaicacanvas.com" class="text-white bg-blue-600 hover:bg-blue-800 px-4 py-2 rounded">Explore the Gallery</a>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery-section text-center">
+      <h2 class="text-2xl font-bold mb-4">Featured Artworks</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded shadow-md">
+          <img src="featured1.jpg" alt="Featured Art 1" class="w-full h-48 object-cover rounded">
+          <h3 class="text-lg font-bold mt-2">Art Title 1</h3>
+        </div>
+        <div class="bg-white p-4 rounded shadow-md">
+          <img src="featured2.jpg" alt="Featured Art 2" class="w-full h-48 object-cover rounded">
+          <h3 class="text-lg font-bold mt-2">Art Title 2</h3>
+        </div>
+        <div class="bg-white p-4 rounded shadow-md">
+          <img src="featured3.jpg" alt="Featured Art 3" class="w-full h-48 object-cover rounded">
+          <h3 class="text-lg font-bold mt-2">Art Title 3</h3>
+        </div>
       </div>
     </div>
 
-    <!-- Introduction Section -->
-    <section>
-      <h2 class="text-2xl font-bold mb-4">About Our Gallery</h2>
-      <p class="text-gray-700 mb-4">Our gallery is a hub for art enthusiasts and collectors alike. We showcase a wide variety of art pieces, including contemporary, abstract, and classical artworks. Our mission is to connect you with beautiful art that resonates with your personal taste and style.</p>
+    <!-- Additional Content Section -->
+    <section class="text-center py-8">
+      <h2 class="text-2xl font-bold mb-4">Why Choose Us?</h2>
+      <p class="text-gray-700 mb-4">Our gallery offers a curated selection of high-quality art pieces from talented artists around the world. Whether you're looking for contemporary, abstract, or classical art, we have something to suit every taste and style.</p>
+      <p class="text-gray-700 mb-4">We are committed to providing exceptional customer service and ensuring that you have a seamless and enjoyable shopping experience. Explore our gallery today and find the perfect piece to enhance your home or office.</p>
     </section>
   </main>
 
@@ -42,5 +120,20 @@
       &copy; 2024 Judaica Canvas. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function moveSlides(n) {
+      currentSlide += n;
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      } else if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
+      document.querySelector('.slides').style.transform = `translateX(${-currentSlide * 100}%)`;
+    }
+  </script>
 </body>
 </html>
